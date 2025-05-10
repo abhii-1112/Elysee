@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const orderRoutes = require('./routes/orderRoutes')
 const connectDB = require('./config/db')
+require("dotenv").config();
+
 
 const app = express()
 
@@ -17,6 +19,6 @@ app.get('/', (req, res)=> {
 
 app.use('/api/order', orderRoutes)
 
-app.listen(5002, ()=>{
-    console.log('Server running on port 5002')
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server running on port ${process.env.PORT}`)
 })
